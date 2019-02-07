@@ -1,0 +1,117 @@
+<br/>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="panel panel-default">
+  <div class="panel-heading">Cadastro de Contato</div>
+  <div class="panel-body">   
+    <div class="form-group col-xs-12 col-sm-3 col-md-2 col-lg-2">
+      <label class="control-label">Nome</label>
+      <input class="form-control" [(ngModel)]="contactViewModel.name" type="text" maxlength="25"/>
+    </div>
+    <div class="form-group col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        <label class="control-label">Endereço</label>
+        <input class="form-control" [(ngModel)]="contactViewModel.address" type="text" maxlength="50"/>
+    </div>
+    <div class="form-group col-xs-12 col-sm-3 col-md-2 col-lg-2">
+        <label class="control-label">Empresa</label>
+        <input class="form-control" [(ngModel)]="contactViewModel.company" type="text" maxlength="50"/>
+    </div>
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <button class="btn btn-primary" type="button" (click)="save(contactViewModel)">Salvar</button>&nbsp;
+        <a class="btn btn-danger" routerLink="/" >Sair</a>
+      </div>      
+  </div>
+</div>
+</div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Telefones</div>
+      <div class="panel-body">
+          <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <label class="control-label">Número</label>
+              <input class="form-control" [(ngModel)]="contactPhoneViewModel.number" type="number" maxlength="13"/>
+          </div>
+          <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <label class="control-label">Tipo</label>
+              <select class="form-control" [(ngModel)]="contactPhoneViewModel.contactTypeId">
+                  <option value="0" selected="selected">Selecione</option>
+                <option *ngFor="let item of contactTypeList" [value]="item.contactTypeId">{{item.description}}</option>
+              </select>
+          </div>
+          <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button class="btn btn-primary" type="button" (click)="addPhone(contactPhoneViewModel)">Adicionar</button>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>                      
+                    </th>
+                    <th>
+                        Telefone
+                    </th>
+                    <th>
+                      Tipo
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of contactViewModel.phones">
+                      <td><button class="btn btn-sm btn-danger" (click)="removePhone(item)"><i class="glyphicon glyphicon-remove"></i></button>                                          </td>
+                    <td>{{item.number}}</td>
+                    <td>{{item.contactTypeId}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      </div>
+    </div>    
+  </div>  
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">E-mails</div>
+        <div class="panel-body">
+            <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <label class="control-label">Endereço</label>
+                <input class="form-control" [(ngModel)]="contactMailViewModel.address" type="email"/>
+            </div>
+            <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <label class="control-label">Tipo</label>
+                <select class="form-control" [(ngModel)]="contactMailViewModel.contactTypeId">
+                    <option value="0" selected="selected">Selecione</option>
+                  <option *ngFor="let item of contactTypeList" [value]="item.contactTypeId">{{item.description}}</option>
+                </select>
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <button class="btn btn-primary" type="button" (click)="addMail(contactMailViewModel)">Adicionar</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>   
+                        
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                      Tipo
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of contactViewModel.mails">
+                    <td><button class="btn btn-sm btn-danger" (click)="removeMail(item)"><i class="glyphicon glyphicon-remove"></i></button>                                          </td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.contactTypeId}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <app-message-operation></app-message-operation>
+</div>

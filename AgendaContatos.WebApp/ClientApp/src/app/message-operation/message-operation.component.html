@@ -1,0 +1,8 @@
+<div [class.alert-error]="hasError()" [class.alert-success]="!hasError()" class="row" >
+  <div class="status-title col-1">Notificações</div>
+  <div class="col-11 status-body" [class.text-success]="!hasError()" [class.text-danger]="hasError()" *ngIf="isVisible">
+    <span class="fa" [class.fa-check-circle]="!hasError()"  [class.fa-exclamation-circle]="hasError()"></span>
+  {{message}}
+  </div>
+
+</div>
